@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   
   # root "articles#index"
 
+  get "sign_up", to: "registrations#new"
+
   get "login", to: "sessions#new"
 
   get "blank", to: "welcome#blank"
