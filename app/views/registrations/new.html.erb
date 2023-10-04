@@ -14,23 +14,42 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="m-sm-3">
-                                <form>
+                                <%= form_with model: @user, url: sign_up_path do |form| %>
+                                    <% if form.object.errors.any? %>
+                                        <div class="alert alert-danger">
+                                            <% form.object.errors.full_messages.each do |message| %>
+                                                <div><%= message %></div>
+                                            <% end %>
+                                        </div>
+                                    <% end %>
                                     <div class="mb-3">
-                                        <label class="form-label">Full name</label>
-                                        <input class="form-control form-control-lg" type="text" name="name" placeholder="Enter your name" />
+                                        <%= form.label :name, class: "form-label" %>
+                                        <%= form.text_field :name, class: "form-control form-control-lg", placeholder: "Enter your name" %>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Email</label>
-                                        <input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
+                                        <%= form.label :email, class: "form-label" %>
+                                        <%= form.text_field :email, class: "form-control form-control-lg", placeholder: "Enter your email" %>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Password</label>
-                                        <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter password" />
+                                        <%= form.label :password, class: "form-label" %>
+                                        <%= form.password_field :password, class: "form-control form-control-lg", placeholder: "Enter your password" %>
+                                    </div>
+                                    <div class="mb-3">
+                                        <%= form.label :password_confirmation, class: "form-label" %>
+                                        <%= form.password_field :password_confirmation, class: "form-control form-control-lg", placeholder: "Confirm your password" %>
+                                    </div>
+                                    <div class="mb-3">
+                                        <%= form.label :role, class: "form-label" %>
+                                        <%= form.text_field :role, class: "form-control form-control-lg", placeholder: "Enter your role" %>
+                                    </div>
+                                    <div class="mb-3">
+                                        <%= form.label :branch, class: "form-label" %>
+                                        <%= form.text_field :branch, class: "form-control form-control-lg", placeholder: "Enter your branch" %>
                                     </div>
                                     <div class="d-grid gap-2 mt-3">
-                                        <%= link_to "Sign up", root_path, class: "btn btn-lg btn-primary" %>
+                                        <%= form.submit "Sign Up", class: "btn btn-lg btn-primary"%>
                                     </div>
-                                </form>
+                                <% end %>
                             </div>
                         </div>
                     </div>
