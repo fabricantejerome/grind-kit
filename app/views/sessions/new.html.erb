@@ -11,17 +11,19 @@
                         </p>
                     </div>
 
+                    <%= render partial: "shared/flash"%>
+
                     <div class="card">
                         <div class="card-body">
                             <div class="m-sm-3">
-                                <form>
+                                <%= form_with url: login_path do |form| %>
                                     <div class="mb-3">
-                                        <label class="form-label">Email</label>
-                                        <input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
+                                        <%= form.label :email, class: "form-label" %>
+                                        <%= form.text_field :email, class: "form-control form-control-lg", placeholder: "Enter your email" %>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Password</label>
-                                        <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
+                                        <%= form.label :password, class: "form-label" %>
+                                        <%= form.password_field :password, class: "form-control form-control-lg", placeholder: "Enter your password" %>
                                     </div>
                                     <div>
                                         <div class="form-check align-items-center">
@@ -30,9 +32,9 @@
                                         </div>
                                     </div>
                                     <div class="d-grid gap-2 mt-3">
-                                        <%= link_to "Sign in", root_path, class: "btn btn-lg btn-primary" %>
+                                        <%= form.submit "Sign in", class: "btn btn-lg btn-primary"%>
                                     </div>
-                                </form>
+                                <% end %>
                             </div>
                         </div>
                     </div>

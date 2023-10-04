@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   post "sign_up", to: "registrations#create"
 
   get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
+
+  delete "logout", to: "sessions#destroy"
 
   get "blank", to: "welcome#blank"
 
