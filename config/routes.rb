@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   delete "logout", to: "sessions#destroy"
 
+  get "password", to: "passwords#edit", as: :edit_password
+  patch "password", to: "passwords#update"
+
   get "blank", to: "welcome#blank"
 
   root to: "welcome#index"

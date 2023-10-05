@@ -1,0 +1,48 @@
+<div class="wrapper">
+	<%= render partial: "shared/sidebar" %>
+    <div class="main">
+        <%= render partial: "shared/topbar" %>
+
+        <main class="content">
+            <div class="container-fluid p-0">
+
+                <h1 class="h3 mb-3">Update Password</h1>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <%# <div class="card-header">
+                                <h5 class="card-title mb-0">Password Form</h5>
+                            </div> %>
+                            <div class="card-body">
+                                <%= form_with model: Current.user, url: edit_password_path do |form| %>
+                                    <% if form.object.errors.any? %>
+                                        <div class="alert alert-danger">
+                                            <% form.object.errors.full_messages.each do |message| %>
+                                                <div><%= message %></div>
+                                            <% end %>
+                                        </div>
+                                    <% end %>
+                                    <div class="mb-3">
+                                        <%= form.label :password, class: "form-label" %>
+                                        <%= form.password_field :password, class: "form-control form-control-lg", placeholder: "Enter your password" %>
+                                    </div>
+                                    <div class="mb-3">
+                                        <%= form.label :password_confirmation, class: "form-label" %>
+                                        <%= form.password_field :password_confirmation, class: "form-control form-control-lg", placeholder: "Confirm your password" %>
+                                    </div>
+                                    <div class="d-grid gap-2 mt-3">
+                                        <%= form.submit "Update Password", class: "btn btn-lg btn-primary"%>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <%= render partial: "shared/footer" %>
+    </div>
+</div>
