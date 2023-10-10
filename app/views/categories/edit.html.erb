@@ -1,0 +1,44 @@
+<div class="wrapper">
+	<%= render partial: "shared/sidebar" %>
+    <div class="main">
+        <%= render partial: "shared/topbar" %>
+
+        <main class="content">
+            <div class="container-fluid p-0">
+
+                <h1 class="h3 mb-3">Category</h1>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Edit Category</h5>
+                            </div>
+                            <div class="card-body">
+                                <%= form_with model: @category, url: category_update_path(id: params[:id]) do |form| %>
+                                    <% if form.object.errors.any? %>
+                                        <div class="alert alert-danger">
+                                            <% form.object.errors.full_messages.each do |message| %>
+                                                <div><%= message %></div>
+                                            <% end %>
+                                        </div>
+                                    <% end %>
+                                    <div class="mb-3">
+                                        <%= form.label :name, "Category Name",  class: "form-label" %>
+                                        <%= form.text_field :name, class: "form-control", placeholder: "Enter Category Name" %>
+                                    </div>
+                                    <div class="mb-3">
+                                        <%= form.submit "Save", class: "btn btn-lg btn-primary"%>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <%= render partial: "shared/footer" %>
+    </div>
+</div>

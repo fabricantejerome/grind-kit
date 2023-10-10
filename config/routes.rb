@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   
   # root "articles#index"
 
+  get "categories", to: 'categories#index'
+  get "category/add", to: 'categories#add'
+  get "category/edit", to: 'categories#edit'
+  patch "category/edit", to: 'categories#update', as: :category_update
+  post "category/add", to: "categories#create"
+  delete "categories", to: 'categories#destroy'
+
   get "item/add", to: 'items#index'
 
   get "sign_up", to: "registrations#new"
