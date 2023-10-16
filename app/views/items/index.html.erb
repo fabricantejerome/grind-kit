@@ -36,9 +36,30 @@
                                                     <%= link_to item_edit_path(id: item.id) do %>
                                                         <i class="align-middle" data-feather="edit"></i>
                                                     <% end %>
-                                                    <%= button_to items_path(id: item.id), class: "d-inline bg-transparent border-0 text-primary", method: :delete do %>
+                                                    
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= item.id %>">
                                                         <i class="align-middle" data-feather="trash-2"></i>
-                                                    <% end %>
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="staticBackdrop<%= item.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Are you sure do you want to delete <%= item.name %>?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <%= button_to "Delete", items_path(id: item.id), class: "btn btn-primary", method: :delete %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         <% end %>
