@@ -39,3 +39,15 @@
 // 3rd party plugin styles
 @import "5-vendor/flatpickr";
 @import "5-vendor/simplebar";
+
+.categories {
+    & .button_to {
+        display: inline-block;
+    }
+}
+
+.items {
+    & .button_to {
+        display: inline-block;
+    }
+}

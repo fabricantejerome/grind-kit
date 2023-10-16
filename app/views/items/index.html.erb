@@ -1,19 +1,19 @@
 <div class="wrapper">
 	<%= render partial: "shared/sidebar" %>
-    <div class="main categories">
+    <div class="main items">
         <%= render partial: "shared/topbar" %>
 
         <main class="content">
             <div class="container-fluid p-0">
 
-                <h1 class="h3 mb-3">Categories</h1>
+                <h1 class="h3 mb-3">Items</h1>
 
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <%= link_to category_add_path, class: "btn btn-primary" do %>
-                                    <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Add Category</span>
+                                <%= link_to item_add_path, class: "btn btn-primary" do %>
+                                    <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Add Item</span>
                                 <% end %>
                             </div>
                             <div class="card-body">
@@ -22,19 +22,21 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
+                                            <th scope="col">Category</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% @categories.each_with_index do |category, idx| %>
+                                        <% @items.each_with_index do |item, idx| %>
                                             <tr>
                                                 <th scope="row"><%= idx + 1 %></th>
-                                                <td><%= category.name %></td>
+                                                <td><%= item.name %></td>
+                                                <td><%= item.category_id ? item.category.name : '' %></td>
                                                 <td>
-                                                    <%= link_to category_edit_path(id: category.id) do %>
+                                                    <%= link_to item_edit_path(id: item.id) do %>
                                                         <i class="align-middle" data-feather="edit"></i>
                                                     <% end %>
-                                                    <%= button_to categories_path(id: category.id), class: "d-inline bg-transparent border-0 text-primary", method: :delete do %>
+                                                    <%= button_to items_path(id: item.id), class: "d-inline bg-transparent border-0 text-primary", method: :delete do %>
                                                         <i class="align-middle" data-feather="trash-2"></i>
                                                     <% end %>
                                                 </td>

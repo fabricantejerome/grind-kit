@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   post "category/add", to: "categories#create"
   delete "categories", to: "categories#destroy"
 
+  get "items", to: "items#index"
   get "item/add", to: "items#add"
   post "item/add", to: "items#create"
+  get "item/edit", to: "items#edit"
+  patch "item/edit", to: "items#update", as: :item_update
+  delete "items", to: "items#destroy"
 
   get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"

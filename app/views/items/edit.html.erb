@@ -1,0 +1,120 @@
+<div class="wrapper">
+	<%= render partial: "shared/sidebar" %>
+    <div class="main">
+        <%= render partial: "shared/topbar" %>
+
+        <main class="content">
+            <div class="container-fluid p-0">
+
+                <h1 class="h3 mb-3">Item Details</h1>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Update Item</h5>
+                            </div>
+                            <div class="card-body">
+                                 <%= form_with model: @item, url: item_update_path(id: params[:id]) do |form| %>
+                                    <% if form.object.errors.any? %>
+                                        <div class="alert alert-danger">
+                                            <% form.object.errors.full_messages.each do |message| %>
+                                                <div><%= message %></div>
+                                            <% end %>
+                                        </div>
+                                    <% end %>
+                                    <div class="mb-3">
+                                        <%= form.label :name, "Item Name",  class: "form-label" %>
+                                        <%= form.text_field :name, class: "form-control", placeholder: "Enter Item Name" %>
+                                    </div>
+                                    <div class="mb-3">
+                                        <%= form.label :category_id, "Category ID",  class: "form-label" %>
+                                        <%= form.select :category_id, @categories.collect {|c| [ c.name, c.id ] }, { include_blank: true }, class: "form-select", placeholder: "Category ID" %>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <%= form.label :description,  class: "form-label" %>
+                                        <%= form.text_field :description, class: "form-control", placeholder: "Enter Description" %>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <%= form.check_box :is_available, class: "form-check-input" %>
+                                            <%= form.label :is_available, "The item is available for sale", class: "form-check-label" %>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="sold-by" class="form-label">Sold by</label>
+                                        <div class="form-check form-check-inline">
+                                            <%= form.radio_button :sold_by, "Each", class: "form-check-input" %>
+                                            <%= form.label :sold_by_each, "Each", class: "form-check-label" %>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <%= form.radio_button :sold_by, "Weight", class: "form-check-input" %>
+                                            <%= form.label :sold_by_weight, "Weight/Volume", class: "form-check-label" %>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <%= form.label :price,  class: "form-label" %>
+                                                <%= form.text_field :price, class: "form-control", placeholder: "Enter Price" %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= form.label :cost,  class: "form-label" %>
+                                                <%= form.text_field :cost, class: "form-control", placeholder: "Enter Cost" %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <%= form.label :sku,  class: "form-label" %>
+                                                <%= form.text_field :sku, class: "form-control", placeholder: "Enter SKU" %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= form.label :barcode,  class: "form-label" %>
+                                                <%= form.text_field :barcode, class: "form-control", placeholder: "Enter Barcode" %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <%= form.check_box :is_track, class: "form-check-input" %>
+                                            <%= form.label :is_track, "Track Stock", class: "form-check-label" %>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <%= form.label :stock, "In Stock", class: "form-label" %>
+                                                <%= form.text_field :stock, class: "form-control", placeholder: "Enter In stock" %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= form.label :low_stock,  class: "form-label" %>
+                                                <%= form.text_field :low_stock, class: "form-control", placeholder: "Enter Low stock" %>
+                                            </div>
+                                        </div>
+                                        <%= form.hidden_field :user_id, value: Current.user.id %>
+                                    </div>
+
+                                   <div class="mb-3">
+                                        <%= form.submit "Save", class: "btn btn-lg btn-primary"%>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <%= render partial: "shared/footer" %>
+    </div>
+</div>
