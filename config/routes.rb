@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   
   # root "articles#index"
 
+  get "pos", to: "pos#index"
+
   get "categories", to: "categories#index"
   get "category/add", to: "categories#add"
   get "category/edit", to: "categories#edit"
