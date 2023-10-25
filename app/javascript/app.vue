@@ -1,0 +1,99 @@
+<template>
+  <div id="app">
+    <p>{{ message }}</p>
+
+    <main class="content">
+            <div class="container-fluid p-0">
+
+                <div class="row">
+                    <div class="col-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <select class="form-control choices-single" v-model="selected">
+                                    <option></option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Item</th>
+                                            <th scope="col">Rrice</th>
+                                            <th scope="col">Qty</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Burger</th>
+                                            <td>2</td>
+                                            <td>10</td>
+                                            <td>20</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="fs-4">Total Amt: 100.00</p>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <p class="fs-4">Remaining Amt: 50.00</p>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <p class="fs-3 mt-4">CASH:</p>
+                                        <input class="form-control form-control-lg" type="text">
+
+                                        <p class="fs-3 mt-4">CHANGE: 10</p>
+                                       
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-primary btn-lg" type="button">TRANSACT</button>
+                                            <button class="btn btn-warning btn-lg" type="button">CLEAR</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+  </div>
+</template>
+
+<script>
+export default {
+  data: function () {
+    return {
+      message: "Hello Vue!"
+    }
+  }
+}
+</script>
+
+<style scoped>
+p {
+  font-size: 2em;
+  text-align: center;
+}
+</style>

@@ -5,7 +5,10 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^7.3.0",
     "@popperjs/core": "^2.11.8",
+    "@rails/webpacker": "5.4.4",
+    "@vue/compiler-sfc": "^3.3.7",
     "autoprefixer": "^10.4.16",
+    "babel-preset-es2015": "^6.24.1",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
     "chart.js": "2.9.4",
@@ -17,7 +20,13 @@
     "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
     "sass": "^1.68.0",
-    "simplebar": "5.3.6"
+    "simplebar": "5.3.6",
+    "vue": "^3.2.36",
+    "vue-loader": "^17.3.0",
+    "vue-template-compiler": "^2.7.15",
+    "vue-turbolinks": "^2.2.2",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
@@ -26,7 +35,11 @@
     "build:css": "yarn build:css:compile && yarn build:css:prefix",
     "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\""
   },
-  "browserslist": [
-    "defaults"
-  ]
+  "devDependencies": {
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "eslint": "^8.52.0",
+    "eslint-plugin-vue": "^9.18.0",
+    "webpack-dev-server": "^3"
+  }
 }
