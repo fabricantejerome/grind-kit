@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete "categories", to: "categories#destroy"
 
   get "items", to: "items#index"
+  get "items/json", to: "items#items_json", as: :items_json
   get "item/add", to: "items#add"
   post "item/add", to: "items#create"
   get "item/edit", to: "items#edit"

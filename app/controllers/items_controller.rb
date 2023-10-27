@@ -3,6 +3,11 @@ class ItemsController < ApplicationController
 		@items = Item.all
 	end
 
+    def items_json
+        @items = Item.all
+        render json: @items.to_json
+    end
+
 	def add
 		@item = Item.new
 		@categories = Category.all
