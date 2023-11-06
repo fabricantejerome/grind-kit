@@ -1,0 +1,52 @@
+<div class="wrapper">
+	<%= render partial: "shared/sidebar" %>
+    <div class="main">
+        <%= render partial: "shared/topbar" %>
+
+        <main class="content">
+            <div class="container-fluid p-0">
+
+                <h1 class="h3 mb-3">Sales</h1>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Transactions</h5>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Item</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Quanity</th>
+                                            <th scope="col">Total</th>
+                                            <th scope="col">Trans ID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% @transaction_details.each_with_index do |trans_detail, idx| %>
+                                            <tr>
+                                                <th scope="row"><%= idx + 1 %></th>
+                                                <td><%= trans_detail.item.name %></td>
+                                                <td><%= trans_detail.price %></td>
+                                                <td><%= trans_detail.quantity %></td>
+                                                <td><%= trans_detail.total %></td>
+                                                <td><%= trans_detail.transaction_id %></td>
+                                            </tr>
+                                        <% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <%= render partial: "shared/footer" %>
+    </div>
+</div>

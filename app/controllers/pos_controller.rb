@@ -25,4 +25,8 @@ class PosController < ApplicationController
             render json: @trans.to_json
         end
     end
+
+    def sales
+        @transaction_details = TransactionDetail.all
+    end
 end

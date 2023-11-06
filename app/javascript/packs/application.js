@@ -6,7 +6,6 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import { createApp } from 'vue'
-import TurbolinksAdapter from 'vue-turbolinks'
 import App from '../app.vue'
 import VueSelect  from "vue-select";
 import VueFeather from 'vue-feather';

@@ -106,50 +106,50 @@ watch(cash, (newCash) => {
 
     change.value = (newCash - totalAmount.value) > 0 ? (newCash - totalAmount.value) : 0
 })
-
-
 </script>
 
 <template>
   <div id="app">
     <main class="content">
         <div class="container-fluid p-0">
-            <div class="row">
-                <div class="col-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <v-select label="name" :options="items" v-model="selected" />
+            <form @submit.prevent="onSubmit">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <v-select label="name" :options="items" v-model="selected" />
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Item</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Qty</th>
+                                            <th scope="col">Total</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(item, index) in cart">
+                                            <th scope="row">{{ item.name }}</th>
+                                            <th scope="row">{{ item.price }}</th>
+                                            <th scope="row">
+                                                <input type="number" class="form-control" v-model="item.quantity" v-bind="item.quantity" @keyup="updateRowTotal(index)" min="1">
+                                            </th>
+                                            <th scope="row">{{ item.total }}</th>
+                                            <th scope="row"><vue-feather type="x" @click="removeFromCart(index)"></vue-feather></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Item</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Qty</th>
-                                        <th scope="col">Total</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(item, index) in cart">
-                                        <th scope="row">{{ item.name }}</th>
-                                        <th scope="row">{{ item.price }}</th>
-                                        <th scope="row"><input type="number" class="form-control" v-model="item.quantity" @keyup="updateRowTotal(index)" min="1"></th>
-                                        <th scope="row">{{ item.total }}</th>
-                                        <th scope="row"><vue-feather type="x" @click="removeFromCart(index)"></vue-feather></th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-4">
-                    <div class="card">
-                        <form @submit.prevent="onSubmit">
+                    <div class="col-4">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -164,7 +164,6 @@ watch(cash, (newCash) => {
                                         <p class="fs-3 mt-4">CASH:</p>
                                         <input class="form-control form-control-lg" type="text" v-model="cash">
 
-                                        <!-- <p class="fs-3 mt-4">CHANGE: {{ (cash - totalAmount) > 0 ? (cash - totalAmount) : 0 }}</p> -->
                                         <p class="fs-3 mt-4">CHANGE: {{ change }}</p>
                                         
                                         <div class="d-grid gap-2">
@@ -174,10 +173,10 @@ watch(cash, (newCash) => {
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </main>
   </div>
