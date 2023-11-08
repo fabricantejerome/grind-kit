@@ -3,8 +3,6 @@ class PosController < ApplicationController
     end
 
     def transact
-        @trans1 = params[:transaction]
-        @trans1[:user_id] = Current.user.id
         @transaction_details = params[:transaction_details]
 
         @transaction_details.each do |item|
@@ -12,13 +10,11 @@ class PosController < ApplicationController
             item.permit!
         end
 
-        @trans1.permit!
-        
         if @transaction_details.empty?
             exit
         end
 
-        @trans = Transaction.new(@trans1)
+        @trans = Transaction.new(trans_params)
 
         if @trans.save
             @trans.transaction_details.create! (@transaction_details)
@@ -28,5 +24,12 @@ class PosController < ApplicationController
 
     def sales
         @transaction_details = TransactionDetail.all
+    end
+
+    private
+
+    def trans_params
+        params[:transaction][:user_id] = Current.user.id
+        params.require(:transaction).permit(:total_amount, :cash, :change, :is_void, :user_id)
     end
 end
