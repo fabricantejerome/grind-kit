@@ -68,7 +68,7 @@ const onSubmit = async() => {
 }
 
 watch(selected, (newSelected) => {
-    const index = cart.value.findIndex(c => c.id === newSelected.id)
+    const index = cart.value.findIndex(c => c.item_id === newSelected.id)
 
     if (newSelected) {
         if (index == -1) {
